@@ -80,7 +80,13 @@
       "Bash(open http://localhost:3001/pitch.html)",
       "Bash(git init)",
       "Bash(cat > /Users/poly/Desktop/cps-energy-bot/.gitignore << 'EOF'\nnode_modules/\n.env\n.DS_Store\n*.log\nEOF)",
-      "Bash(git add -A)"
+      "Bash(git add -A)",
+      "Bash(git commit -m \"CPS Energy Bot ready for deploy\")",
+      "Bash(gh repo create cps-energy-bot --public --push --source=.)",
+      "Bash(git remote add origin https://github.com/gxoose/cps-energy-bot.git)",
+      "Bash(git push -u origin main)",
+      "Bash(cat > /Users/poly/Desktop/cps-energy-bot/vercel.json << 'EOF'\n{\n  \"version\": 2,\n  \"builds\": [{ \"src\": \"server/index.js\", \"use\": \"@vercel/node\" }],\n  \"routes\": [\n    { \"src\": \"/api/\\(.*\\)\", \"dest\": \"server/index.js\" },\n    { \"src\": \"/\\(.*\\)\", \"dest\": \"server/index.js\" }\n  ]\n}\nEOF)",
+      "Bash(git add -A && git commit -m \"add vercel config\" && git push)"
     ]
   }
 }
